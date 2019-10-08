@@ -134,17 +134,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-01T14:52:03.000Z">2019-10-01</time>
+                <time class="level-item has-text-grey" datetime="2019-10-06T13:31:25.000Z">2019-10-06</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/hexo/categories/MYsql/">MYsql</a>
+                <a class="has-link-grey -link" href="/hexo/categories/Java/">Java</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1309 个字)
+                    5 分钟 读完 (大约 760 个字)
                 </span>
                 
                 
@@ -153,78 +153,17 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/hexo/2019/10/01/mysql基础/">mysql基础</a>
+                <a class="has-link-black-ter" href="/hexo/2019/10/06/java线程池简单实现/">java线程池简单实现</a>
             
         </h1>
         <div class="content">
-            <h2 id="mysql基本操作"><a href="#mysql基本操作" class="headerlink" title="mysql基本操作"></a>mysql基本操作</h2><ol>
-<li><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create database test ;                   -- 默认方式创建数据库</span><br><span class="line"></span><br><span class="line">create database test character set utf8; -- 指定字符集创建数据库</span><br></pre></td></tr></table></figure>
-</li>
-<li><h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><p>用户管理对应mysql.user表，修改对应数据库即可</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-- 新增用户</span><br><span class="line">GRANT ALL PRIVILEGES on test.* to test@localhost IDENTIFIED by &apos;test&apos;;</span><br><span class="line">-- 查看用户权限</span><br><span class="line">SHOW GRANTS FOR test@localhost;</span><br><span class="line">-- 增加用户权限</span><br><span class="line">GRANT INSERT on test.* to test@localhost;</span><br><span class="line">-- 减少用户权限</span><br><span class="line">REVOKE INSERT on sdgx.* from test@localhost;</span><br><span class="line">-- 删除用户</span><br><span class="line">DELETE FROM user WHERE user=&apos;test&apos; AND WHERE host=&apos;localhost&apos;;</span><br><span class="line"></span><br><span class="line">-- 忘记mysql root账户密码（linux）</span><br><span class="line">systemctl stop mysql             -- 关闭mysql</span><br><span class="line">mysqld --skip-grant-tables    -- 跳过校验</span><br><span class="line">-- 修改密码</span><br><span class="line">pkill mysqld                                -- 杀掉进程</span><br><span class="line">systemctl restart mysql          -- 重启mysql</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h3><ol>
-<li><h4 id="1-NF-第一范式"><a href="#1-NF-第一范式" class="headerlink" title="1-NF 第一范式"></a>1-NF 第一范式</h4><p>表中所有字段都是不可分割的原子集。(比如：地址可以拆分为省、市、县，将其拆开三个字段则满足第一范式，否则不满足)。</p>
-</li>
-<li><h4 id="2-NF-第二范式"><a href="#2-NF-第二范式" class="headerlink" title="2-NF 第二范式"></a>2-NF 第二范式</h4><p>首先满足第一范式，每一列（除主键）都完全依赖与主键。（使用联合主键，某一列仅对联合主键的其中部分主键构成依赖，则不满足第二范式）</p>
-</li>
-<li><p>####3-NF 第三范式</p>
-<p>首次满足第二范式，除主键外其特列不能有传递依赖关系（即除主键外其它列不对任一列构成依赖关系）</p>
-</li>
-</ol>
-</li>
-<li><h2 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h2></li>
-</ol>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">create table user(</span><br><span class="line"></span><br><span class="line">	ID int(11),</span><br><span class="line">    name varchar(20),</span><br><span class="line">    sex char(1),</span><br><span class="line">    birth DATE</span><br><span class="line"></span><br><span class="line">); -- 创建数据库表并指明列名与数据大小</span><br><span class="line">create table user(</span><br><span class="line">    ID int(11) not null COMMENT &quot;主键&quot;，  -- 不可为空，备注主键</span><br><span class="line">    name varchar(20) null COMMENT &quot;姓名&quot;, -- 可为空，备注姓名</span><br><span class="line">    sex char(1) not null COMMENT &quot;性别&quot;， -- 不可为空，备注性别</span><br><span class="line">    birth DATE COMMENT &quot;生日&quot;,            -- 默认可为空，备注生日</span><br><span class="line">    PRIMARY KEY(ID)						  -- 设置ID为主键</span><br><span class="line">);</span><br><span class="line">-- 修改字段属性(添加自增约束)</span><br><span class="line">ALTER TABLE user MODIFY COLUMN ID int(10) NOT NULL AUTO_INCREMENT COMMENT &apos;主键&apos;；</span><br><span class="line">-- 删除主键约束</span><br><span class="line">ALTER TABLE user DROP PRIMARY KEY;</span><br><span class="line">-- 查看表字段信息</span><br><span class="line">DESCRIBE user;(简写：DESC user;)</span><br><span class="line">-- 添加唯一约束</span><br><span class="line">ALTER TABLE user ADD UNIQUE(id);//创建表时添加参考主键；</span><br><span class="line">-- 删除唯一约束</span><br><span class="line">ALTER TABLE user DROP INDEX id;</span><br><span class="line">-- 修改默认约束</span><br><span class="line">ALTER TABLE user MODIFY COLUMN sex char(1) default &apos;M&apos; not null;</span><br><span class="line">-- 添加列</span><br><span class="line">ALTER TABLE user ADD COLUMN test varchar(20);</span><br><span class="line">-- 删除列</span><br><span class="line">ALTER TABLE user DROP COLUMN test;</span><br><span class="line">-- 外键(外键所链接的列必须为主键)</span><br><span class="line">create table u_order(id int(11), W_id int(11),foreign key(w_id) references user(id));</span><br><span class="line">-- 数据类型</span><br><span class="line">int(11) -- 表示占用一个int（4字节）,显示长度10位，头默认填充0，超过会截断</span><br></pre></td></tr></table></figure>
+            <h4 id="线程池代码实现"><a href="#线程池代码实现" class="headerlink" title="线程池代码实现"></a>线程池代码实现</h4><p>​    单纯练习Java并发编程，还没看完线程池实现的源代码，自己写的，如有错误希望指正，尽可能在保证线程安全的情况下，使用非锁实现。可能存在效率等问题，仅供学习参考。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.concurrent.ArrayBlockingQueue;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.concurrent.BlockingQueue;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThreadPoolDemo</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//初始化大小</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> init;</span><br><span class="line">    <span class="hljs-comment">//当前线程数量</span></span><br><span class="line">    <span class="hljs-keyword">private</span> AtomicInteger count ;</span><br><span class="line">    <span class="hljs-comment">//工作线程数量</span></span><br><span class="line">    <span class="hljs-keyword">private</span> AtomicInteger workQuantity = <span class="hljs-keyword">new</span> AtomicInteger(<span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-comment">//等待线程数量</span></span><br><span class="line">    <span class="hljs-keyword">private</span> AtomicInteger waitQuantity = <span class="hljs-keyword">new</span> AtomicInteger(<span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-comment">//最大线程数</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> max;</span><br><span class="line">    <span class="hljs-comment">//线程存活时间(单位毫秒)</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> mills = <span class="hljs-number">60</span>*<span class="hljs-number">1000</span>;</span><br><span class="line">    <span class="hljs-comment">//状态位，线程池停止状态</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">boolean</span> status ;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> BlockingQueue&lt;Runnable&gt; queue ;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">   *</span></span><br><span class="line"><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> init 最大线程池数量</span></span><br><span class="line"><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> max  最大等待队列长度</span></span><br><span class="line"><span class="hljs-comment">   */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ThreadPoolDemo</span><span class="hljs-params">(<span class="hljs-keyword">int</span> init,<span class="hljs-keyword">int</span> max)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.init = init;</span><br><span class="line">        <span class="hljs-keyword">this</span>.max = max;</span><br><span class="line">        count= <span class="hljs-keyword">new</span> AtomicInteger(<span class="hljs-number">0</span>);</span><br><span class="line">        queue = <span class="hljs-keyword">new</span> ArrayBlockingQueue&lt;&gt;(max);</span><br><span class="line">        status = <span class="hljs-keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">   *</span></span><br><span class="line"><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> runnable 将要执行的任务</span></span><br><span class="line"><span class="hljs-comment">   * <span class="hljs-doctag">@return</span> 提交任务是否成功</span></span><br><span class="line"><span class="hljs-comment">   */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">submit</span><span class="hljs-params">(Runnable runnable)</span>  </span>&#123;</span><br><span class="line">          <span class="hljs-keyword">boolean</span> offerStatus = <span class="hljs-keyword">false</span>;</span><br><span class="line">          <span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>)&#123;</span><br><span class="line">            offerStatus = queue.offer(runnable);</span><br><span class="line">            <span class="hljs-keyword">if</span>(waitQuantity.get()==<span class="hljs-number">0</span>&amp;&amp;workQuantity.get()&lt;init)&#123;</span><br><span class="line">              <span class="hljs-comment">//工作线程+1</span></span><br><span class="line">              workQuantity.getAndAdd(<span class="hljs-number">1</span>);</span><br><span class="line">              <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">this</span>).start();</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="hljs-keyword">synchronized</span> (queue)&#123;</span><br><span class="line">            queue.notify();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="hljs-keyword">return</span> offerStatus;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">   *</span></span><br><span class="line"><span class="hljs-comment">   * <span class="hljs-doctag">@return</span>返回当前状态工作线程数量</span></span><br><span class="line"><span class="hljs-comment">   */</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>  <span class="hljs-title">getCurrentWorkThreadQuantity</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> workQuantity.get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">   *</span></span><br><span class="line"><span class="hljs-comment">   * <span class="hljs-doctag">@return</span>返回当前状态下等待态线程数量</span></span><br><span class="line"><span class="hljs-comment">   */</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getCurrentWaitQuantity</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> waitQuantity.get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">   *</span></span><br><span class="line"><span class="hljs-comment">   * <span class="hljs-doctag">@return</span>阻塞队列中等待的任务数量</span></span><br><span class="line"><span class="hljs-comment">   */</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getRemaining</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> queue.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">   * 等待正在执行的任务结束，关闭线程池</span></span><br><span class="line"><span class="hljs-comment">   */</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">shutdown</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">      <span class="hljs-comment">//清空队列</span></span><br><span class="line">      status = <span class="hljs-keyword">false</span>;</span><br><span class="line">      queue.clear();</span><br><span class="line">      <span class="hljs-keyword">synchronized</span>(queue)&#123;</span><br><span class="line">        queue.notifyAll();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">      <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>)&#123;</span><br><span class="line">        Runnable work = <span class="hljs-keyword">null</span>;</span><br><span class="line">        <span class="hljs-keyword">synchronized</span>(queue)&#123;</span><br><span class="line">          <span class="hljs-comment">//计算超时时间</span></span><br><span class="line">          <span class="hljs-keyword">long</span> future = System.currentTimeMillis() + mills;</span><br><span class="line">          <span class="hljs-keyword">while</span> (queue.isEmpty())&#123;</span><br><span class="line">            <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">              <span class="hljs-comment">//判断是否超时</span></span><br><span class="line">              <span class="hljs-keyword">if</span>(!status||(future - System.currentTimeMillis())&lt;<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                <span class="hljs-comment">//工作线程-1</span></span><br><span class="line">                workQuantity.getAndDecrement();</span><br><span class="line">                <span class="hljs-keyword">return</span>;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="hljs-comment">//等待线程+1</span></span><br><span class="line">              waitQuantity.getAndAdd(<span class="hljs-number">1</span>);</span><br><span class="line">              queue.wait(mills);</span><br><span class="line">              <span class="hljs-comment">//等待线程-1</span></span><br><span class="line">              waitQuantity.getAndAdd(-<span class="hljs-number">1</span>);</span><br><span class="line">            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          work = queue.poll();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span>(work!=<span class="hljs-keyword">null</span>)&#123;</span><br><span class="line">          work.run();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="4">
-<li><h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2></li>
-</ol>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 插入一条数据</span><br><span class="line">INSERT INTO user (id,name,sex,birth) value (&apos;1&apos;,&apos;test&apos;,&apos;M&apos;,now());</span><br><span class="line">-- 插入多条数据</span><br><span class="line">INSERT INTO user (id,name,sex,birth) value (&apos;2&apos;,&apos;test2&apos;,&apos;S&apos;,now()),</span><br><span class="line">(&apos;3&apos;,&apos;test3&apos;,&apos;M&apos;,now());</span><br></pre></td></tr></table></figure>
+<h5 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h5><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.cx.demo1;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@ClassName</span>: com.cx.demo1</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 线程池测试类</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@team</span>:zua</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: cx</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@createdatatime</span>: 2019-10-06 19:40</span></span><br><span class="line"><span class="hljs-comment"> **/</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestThreadPool</span> </span>&#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Calculation calculation = <span class="hljs-keyword">new</span> Calculation();</span><br><span class="line">    ThreadPoolDemo threadPoolDemo = <span class="hljs-keyword">new</span> ThreadPoolDemo(<span class="hljs-number">4</span>,<span class="hljs-number">20</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span> ;i &lt; <span class="hljs-number">2</span> ;i++)&#123;</span><br><span class="line">      threadPoolDemo.submit(calculation);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">      Thread.sleep(<span class="hljs-number">1</span>*<span class="hljs-number">1000</span>);</span><br><span class="line">    &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="hljs-string">"init+++++"</span>);</span><br><span class="line">    System.out.println(<span class="hljs-string">"worker :"</span>+ threadPoolDemo.getCurrentWorkThreadQuantity());</span><br><span class="line">    System.out.println(<span class="hljs-string">"waiter :"</span>+threadPoolDemo.getCurrentWaitQuantity());</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span> ;i &lt; <span class="hljs-number">4</span> ;i++)&#123;</span><br><span class="line">      threadPoolDemo.submit(calculation);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">      Thread.sleep(<span class="hljs-number">1</span>*<span class="hljs-number">1000</span>);</span><br><span class="line">    &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="hljs-string">"++++9++run"</span>);</span><br><span class="line">    System.out.println(<span class="hljs-string">"worker :"</span>+threadPoolDemo.getCurrentWorkThreadQuantity());</span><br><span class="line">    System.out.println(<span class="hljs-string">"waiter :"</span>+threadPoolDemo.getCurrentWaitQuantity());</span><br><span class="line">    <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">      Thread.sleep(<span class="hljs-number">50</span>*<span class="hljs-number">1000</span>);</span><br><span class="line">    &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="hljs-string">"sleep++++"</span>);</span><br><span class="line">    System.out.println(<span class="hljs-string">"worker :"</span>+threadPoolDemo.getCurrentWorkThreadQuantity());</span><br><span class="line">    System.out.println(<span class="hljs-string">"waiter :"</span>+threadPoolDemo.getCurrentWaitQuantity());</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span> ;i &lt; <span class="hljs-number">50</span> ;i++)&#123;</span><br><span class="line">      String submitStatus = threadPoolDemo.submit(calculation)?<span class="hljs-string">"success"</span>:<span class="hljs-string">"failure"</span>;</span><br><span class="line">      System.out.println(submitStatus);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="hljs-string">"shutdown ++++++before"</span>);</span><br><span class="line">    System.out.println(<span class="hljs-string">"worker :"</span>+threadPoolDemo.getCurrentWorkThreadQuantity());</span><br><span class="line">    System.out.println(<span class="hljs-string">"waiter :"</span>+threadPoolDemo.getCurrentWaitQuantity());</span><br><span class="line">    threadPoolDemo.shutdown();</span><br><span class="line">    <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">      Thread.sleep(<span class="hljs-number">10</span>*<span class="hljs-number">1000</span>);</span><br><span class="line">    &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="hljs-string">"shutdown +++++ after"</span>);</span><br><span class="line">    System.out.println(<span class="hljs-string">"worker :"</span>+threadPoolDemo.getCurrentWorkThreadQuantity());</span><br><span class="line">    System.out.println(<span class="hljs-string">"waiter :"</span>+threadPoolDemo.getCurrentWaitQuantity());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Calculation</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span></span>&#123;</span><br><span class="line">  <span class="hljs-meta">@Override</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">      Thread.sleep(<span class="hljs-number">10</span>*<span class="hljs-number">1000</span>);</span><br><span class="line">    &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="5">
-<li><h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE user SET id=1 WHERE id=2;</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM user WHERE id=1;-- 删除user表id为1的数据</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-- 连表查询</span><br><span class="line">select * from user,u_order where user.id=U_order.W_id;</span><br><span class="line">-- 子查询</span><br><span class="line">select * from user where id in (select W_id from u_order);</span><br><span class="line">-- 求并集(列数应该相同)</span><br><span class="line">select id from user union select id from u_order;</span><br><span class="line">-- 查询结果排序(desc:倒序)</span><br><span class="line">select id from user order by id desc;</span><br><span class="line">-- 查询指定区间的数据</span><br><span class="line">select * from user limit start,length;</span><br><span class="line">-- 分组聚合查询</span><br><span class="line">select count(number) from user group by name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>事务是最小的不可分割的工作单元,事务能保证一个业务的完整性。</p>
-<p>事务的特征ACID：</p>
-<p>A:atomicity:原子性:事务是最小执行单位，不可分割</p>
-<p>C:consistency: 一致性:事务要求，同一事务中SQL语句，必须同时成功或者失败。</p>
-<p>I:isolation: 隔离性:事务1和事务2之间具有隔离性。</p>
-<p>D:durability:持久性:事务一旦结束不可以回滚</p>
-<p>//关闭mysql自动提交</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">set autocommit=0;</span><br><span class="line">-- 手动提交事务</span><br><span class="line">commit；</span><br><span class="line">-- 手动回滚</span><br><span class="line">rollback；</span><br><span class="line">-- 手动开启事务</span><br><span class="line">begin;</span><br><span class="line">start transaction;</span><br></pre></td></tr></table></figure>
-
-<p>事务隔离级别：</p>
-<ol>
-<li><p>read uncommitted;  读未提交的</p>
-<p>不加锁一般不用</p>
-</li>
-<li><p>read committed;       读已提交的</p>
-<p>读不加锁，添加、修改、删除需要加锁</p>
-</li>
-<li><p>repeatable read;       可重复读</p>
-<p>MySQL通过版本控制（MVCC）实现读不加锁，不通过MVCC实现需要加读锁</p>
-</li>
-<li><p>serializanle                串行化</p>
-<p>所有读写均加锁</p>
-</li>
-</ol>
-</li>
-</ol>
-<p>查看数据库隔离级别</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-- 查看数据库全局隔离级别</span><br><span class="line">select @@global.transaction_isolation;</span><br><span class="line">select @@global.tx_isolation; -- mariadb或mysql5.*</span><br><span class="line">-- 查看数据会话级隔离级别</span><br><span class="line">select @@transaction_isolation;</span><br><span class="line">select @@tx_isolation; -- mariadb或mysql5.*</span><br><span class="line">-- 修改数据库隔离级别</span><br><span class="line">set global transaction isolation level read uncommitted;-- 全局</span><br><span class="line">set transaction isolation level read uncommitted; -- 会话级别</span><br><span class="line">-- 读未提交，可能由于事务回滚造成脏读</span><br><span class="line">set global transaction isolation level read committed;</span><br><span class="line">-- 读已提交，可能不可重复读（另一事务修改数据之后，另一事务内多次读同一表数据的值不同）</span><br><span class="line">set global transaction isolation level repeatable read;</span><br><span class="line">-- 重复读，可能发生幻读（另一事务提交的数据，不能在事务结束前被其它事务获取）</span><br><span class="line">set global transaction isolation level serializable;</span><br><span class="line">-- 串行化 ，另一操作该表的事务阻塞，可能死锁（mysql自带死锁检查）；</span><br></pre></td></tr></table></figure>
-
-<ol start="9">
-<li><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//创建索引 索引名前缀 idx_</span><br><span class="line">create index idx_user_name on user(name);</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
+<h5 id="期望效果"><a href="#期望效果" class="headerlink" title="期望效果"></a>期望效果</h5><p>​    当任务数量小于线程池最大数量时，为每个任务创建线程，任务完成后等待60秒，无新的任务则释放线程，</p>
+<p>当任务数量大于最大线程数量时，将任务加入阻塞队列，阻塞队列满后拒绝新的任务。工作线程完成任务后，去阻塞队列取新的任务执行。</p>
 
         </div>
         
@@ -257,6 +196,8 @@
             <li><a class="pagination-link is-current" href="/hexo/page/2/">2</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/hexo/page/3/">3</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/hexo/page/4/">4</a></li>
             
         </ul>
     </nav>
@@ -305,7 +246,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        4
                     </p>
                 </div>
             </div>
@@ -315,7 +256,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        4
                     </p>
                 </div>
             </div>
@@ -325,7 +266,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        14
+                        19
                     </p>
                 </div>
             </div>
@@ -414,6 +355,22 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/hexo/categories/Linux/">
+            <span class="level-start">
+                <span class="level-item">Linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/hexo/categories/Linux/Centos8/">
+            <span class="level-start">
+                <span class="level-item">Centos8</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/hexo/categories/MYsql/">
             <span class="level-start">
                 <span class="level-item">MYsql</span>
@@ -432,7 +389,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/hexo/tags/Java-SE/" style="font-size: 10px;">Java SE</a> <a href="/hexo/tags/console/" style="font-size: 10px;">console</a> <a href="/hexo/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/hexo/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/hexo/tags/事务/" style="font-size: 10px;">事务</a> <a href="/hexo/tags/基础/" style="font-size: 10px;">基础</a> <a href="/hexo/tags/增删改查/" style="font-size: 10px;">增删改查</a> <a href="/hexo/tags/并发编程/" style="font-size: 10px;">并发编程</a> <a href="/hexo/tags/用户管理/" style="font-size: 10px;">用户管理</a> <a href="/hexo/tags/索引/" style="font-size: 10px;">索引</a> <a href="/hexo/tags/线程同步/" style="font-size: 10px;">线程同步</a> <a href="/hexo/tags/线程池/" style="font-size: 10px;">线程池</a> <a href="/hexo/tags/线程线程池/" style="font-size: 10px;">线程线程池</a> <a href="/hexo/tags/锁/" style="font-size: 10px;">锁</a>
+        <a href="/hexo/tags/Centos8/" style="font-size: 10px;">Centos8</a> <a href="/hexo/tags/Java-SE/" style="font-size: 10px;">Java SE</a> <a href="/hexo/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/hexo/tags/console/" style="font-size: 10px;">console</a> <a href="/hexo/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/hexo/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/hexo/tags/yum/" style="font-size: 10px;">yum</a> <a href="/hexo/tags/事务/" style="font-size: 10px;">事务</a> <a href="/hexo/tags/基础/" style="font-size: 10px;">基础</a> <a href="/hexo/tags/增删改查/" style="font-size: 10px;">增删改查</a> <a href="/hexo/tags/并发编程/" style="font-size: 10px;">并发编程</a> <a href="/hexo/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/hexo/tags/本地源/" style="font-size: 10px;">本地源</a> <a href="/hexo/tags/用户管理/" style="font-size: 10px;">用户管理</a> <a href="/hexo/tags/索引/" style="font-size: 10px;">索引</a> <a href="/hexo/tags/线程同步/" style="font-size: 10px;">线程同步</a> <a href="/hexo/tags/线程池/" style="font-size: 10px;">线程池</a> <a href="/hexo/tags/线程线程池/" style="font-size: 10px;">线程线程池</a> <a href="/hexo/tags/锁/" style="font-size: 10px;">锁</a>
     </div>
 </div>
     
@@ -444,6 +401,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/hexo/2019/10/08/Centos8挂载光盘使用本地yum源/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/hexo/images/thumbnail.svg" alt="Centos8挂载光盘使用本地yum源">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-08T12:52:36.000Z">2019-10-08</time></div>
+                    <a href="/hexo/2019/10/08/Centos8挂载光盘使用本地yum源/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Centos8挂载光盘使用本地yum源</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/hexo/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/hexo/categories/Linux/Centos8/">Centos8</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -519,7 +495,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -549,8 +525,22 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/Centos8/">
+                        <span class="tag">Centos8</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/Java-SE/">
                         <span class="tag">Java SE</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/Linux/">
+                        <span class="tag">Linux</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -572,6 +562,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/mysql/">
                         <span class="tag">mysql</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/yum/">
+                        <span class="tag">yum</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -600,6 +597,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/并发编程/">
                         <span class="tag">并发编程</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/服务器/">
+                        <span class="tag">服务器</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/本地源/">
+                        <span class="tag">本地源</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -670,6 +681,25 @@
         
         <article class="media">
             
+            <a href="/hexo/2019/10/08/Centos8挂载光盘使用本地yum源/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/hexo/images/thumbnail.svg" alt="Centos8挂载光盘使用本地yum源">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-08T12:52:36.000Z">2019-10-08</time></div>
+                    <a href="/hexo/2019/10/08/Centos8挂载光盘使用本地yum源/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Centos8挂载光盘使用本地yum源</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/hexo/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/hexo/categories/Linux/Centos8/">Centos8</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/hexo/2019/10/06/java线程池简单实现/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/hexo/images/thumbnail.svg" alt="java线程池简单实现">
@@ -742,7 +772,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -772,8 +802,22 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/Centos8/">
+                        <span class="tag">Centos8</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/Java-SE/">
                         <span class="tag">Java SE</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/Linux/">
+                        <span class="tag">Linux</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -795,6 +839,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/mysql/">
                         <span class="tag">mysql</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/yum/">
+                        <span class="tag">yum</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -823,6 +874,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/并发编程/">
                         <span class="tag">并发编程</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/服务器/">
+                        <span class="tag">服务器</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/本地源/">
+                        <span class="tag">本地源</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
