@@ -134,17 +134,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-09T15:42:48.000Z">2019-10-09</time>
+                <time class="level-item has-text-grey" datetime="2019-10-19T13:29:12.000Z">2019-10-19</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/hexo/categories/MYsql/">MYsql</a>
+                <a class="has-link-grey -link" href="/hexo/categories/ORACLE/">ORACLE</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 407 个字)
+                    2 分钟 读完 (大约 314 个字)
                 </span>
                 
                 
@@ -153,77 +153,15 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/hexo/2019/10/09/mysql查询应用/">mysql查询应用</a>
+                <a class="has-link-black-ter" href="/hexo/2019/10/19/ORACLE基础练习/">ORACLE基础练习</a>
             
         </h1>
         <div class="content">
-            <h3 id="mysql分组查询一列中最大元素的行"><a href="#mysql分组查询一列中最大元素的行" class="headerlink" title="mysql分组查询一列中最大元素的行"></a>mysql分组查询一列中最大元素的行</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//创建数据库表</span><br><span class="line">CREATE TABLE `teacher_course`  (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &apos;主键&apos;,</span><br><span class="line">  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT &apos;姓名&apos;,</span><br><span class="line">  `quantity` int(1) NULL DEFAULT NULL COMMENT &apos;选课人数&apos;,</span><br><span class="line">  `course_id` int(11) NULL DEFAULT NULL COMMENT &apos;课程主键&apos;,</span><br><span class="line">  PRIMARY KEY (`id`) USING BTREE</span><br><span class="line">) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;</span><br><span class="line"></span><br><span class="line">CREATE TABLE `course`  (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &apos;主键&apos;,</span><br><span class="line">  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT &apos;课程名&apos;,</span><br><span class="line">  PRIMARY KEY (`id`) USING BTREE</span><br><span class="line">) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;</span><br><span class="line">//填充数据</span><br><span class="line">INSERT INTO `teacher_course` VALUES (1, &apos;张三&apos;, 50, 1);</span><br><span class="line">INSERT INTO `teacher_course` VALUES (2, &apos;李四&apos;, 60, 2);</span><br><span class="line">INSERT INTO `teacher_course` VALUES (3, &apos;王五&apos;, 55, 1);</span><br><span class="line">INSERT INTO `teacher_course` VALUES (4, &apos;赵六&apos;, 70, 2);</span><br><span class="line">INSERT INTO `teacher_course` VALUES (5, &apos;测试&apos;, 61, 2);</span><br><span class="line">INSERT INTO `teacher_course` VALUES (6, &apos;王五2&apos;, 55, 1);</span><br><span class="line"></span><br><span class="line">INSERT INTO `course` VALUES (1, &apos;数据结构&apos;);</span><br><span class="line">INSERT INTO `course` VALUES (2, &apos;组成原理&apos;);</span><br><span class="line">INSERT INTO `course` VALUES (3, &apos;操作系统&apos;);</span><br><span class="line">INSERT INTO `course` VALUES (4, &apos;网络原理&apos;);</span><br><span class="line"></span><br><span class="line">//全部信息数据</span><br><span class="line">SELECT</span><br><span class="line">	t.`name` AS NAME,</span><br><span class="line">	t.quantity AS quantity,</span><br><span class="line">	c.`name` AS course </span><br><span class="line">FROM</span><br><span class="line">	teacher_course AS t</span><br><span class="line">	JOIN course AS c ON t.course_id = c.id;</span><br></pre></td></tr></table></figure>
+            <h3 id="1-用户管理"><a href="#1-用户管理" class="headerlink" title="1. 用户管理"></a>1. 用户管理</h3><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//创建用户</span><br><span class="line">SQL&gt; create user test identified by test;</span><br><span class="line"></span><br><span class="line">用户已创建。</span><br><span class="line">//查看当前用户</span><br><span class="line">SQL&gt; show user;</span><br><span class="line">USER 为 "SYSTEM"</span><br><span class="line">//修改用户密码</span><br><span class="line">SQL&gt; password test</span><br><span class="line">更改 test 的口令</span><br><span class="line">新口令:</span><br><span class="line">重新键入新口令:</span><br><span class="line">口令已更改</span><br><span class="line">//删除用户</span><br><span class="line">SQL&gt; drop user test;</span><br><span class="line"></span><br><span class="line">用户已删除。</span><br><span class="line"></span><br><span class="line">//用户授权(系统权限)</span><br><span class="line">SQL&gt; grant connect to test;</span><br><span class="line"></span><br><span class="line">授权成功。</span><br><span class="line">//对象权限</span><br><span class="line">SQL&gt; grant select on ry.sys_user to test;</span><br><span class="line"></span><br><span class="line">授权成功。</span><br><span class="line">//收回用户权限</span><br><span class="line">SQL&gt; revoke select on ry.sys_user from test;</span><br><span class="line"></span><br><span class="line">撤销成功。</span><br><span class="line">//可传递用户权限</span><br><span class="line">SQL&gt; grant select on ry.sys_user to test with grant option;</span><br><span class="line"></span><br><span class="line">授权成功。</span><br></pre></td></tr></table></figure>
 
-<h6 id="表格效果"><a href="#表格效果" class="headerlink" title="表格效果"></a>表格效果</h6><table>
-<thead>
-<tr>
-<th>姓名</th>
-<th>选择人数</th>
-<th>课程名</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>张三</td>
-<td>50</td>
-<td>数据结构</td>
-</tr>
-<tr>
-<td>李四</td>
-<td>60</td>
-<td>组成原理</td>
-</tr>
-<tr>
-<td>王五</td>
-<td>55</td>
-<td>数据结构</td>
-</tr>
-<tr>
-<td>赵六</td>
-<td>70</td>
-<td>组成原理</td>
-</tr>
-<tr>
-<td>测试</td>
-<td>61</td>
-<td>组成原理</td>
-</tr>
-<tr>
-<td>王五2</td>
-<td>55</td>
-<td>数据结构</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//目的选择出所有个课程选课人数最多的老师</span><br><span class="line">SELECT</span><br><span class="line">	t.`name` AS NAME,</span><br><span class="line">	t.quantity AS quantity,</span><br><span class="line">	c.`name` AS course </span><br><span class="line">FROM</span><br><span class="line">	teacher_course AS t</span><br><span class="line">	JOIN course AS c ON t.course_id = c.id</span><br><span class="line">	JOIN ( SELECT MAX( teacher_course.quantity ) AS quantity, teacher_course.course_id FROM teacher_course GROUP BY teacher_course.course_id ) AS s ON s.course_id = t.course_id </span><br><span class="line">	AND s.quantity = t.quantity;</span><br></pre></td></tr></table></figure>
+<h3 id="2-数据库表操作"><a href="#2-数据库表操作" class="headerlink" title="2. 数据库表操作"></a>2. 数据库表操作</h3><figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">//创建表</span><br><span class="line">SQL&gt; create table ry.test(name varchar2(20),</span><br><span class="line">  2  age number(4),</span><br><span class="line">  3  id number(18));</span><br><span class="line"></span><br><span class="line">表已创建。</span><br><span class="line">//表添加字段</span><br><span class="line">SQL&gt; alter table ry.test add (test varchar2(20));</span><br><span class="line"></span><br><span class="line">表已更改。</span><br><span class="line">//查看表结构</span><br><span class="line">SQL&gt; desc ry.test;</span><br><span class="line"> 名称                                      是否为空? 类型</span><br><span class="line"> <span class="hljs-comment">----------------------------------------- -------- ----------------------------</span></span><br><span class="line"> NAME                                               VARCHAR2(20)</span><br><span class="line"> AGE                                                NUMBER(4)</span><br><span class="line"> ID                                                 NUMBER(18)</span><br><span class="line"> TEST                                               VARCHAR2(20)</span><br><span class="line"> </span><br><span class="line">//修改表结构</span><br><span class="line"></span><br><span class="line">SQL&gt; alter table ry.test modify (test varchar2(10));</span><br><span class="line"></span><br><span class="line">表已更改。</span><br><span class="line"></span><br><span class="line">SQL&gt; desc ry.test;</span><br><span class="line"> 名称                                      是否为空? 类型</span><br><span class="line"> <span class="hljs-comment">----------------------------------------- -------- ----------------------------</span></span><br><span class="line"> NAME                                               VARCHAR2(20)</span><br><span class="line"> AGE                                                NUMBER(4)</span><br><span class="line"> ID                                                 NUMBER(18)</span><br><span class="line"> TEST                                               VARCHAR2(10)</span><br><span class="line">//删除字段名</span><br><span class="line">SQL&gt; alter table ry.test drop column test;</span><br><span class="line"></span><br><span class="line">表已更改。</span><br><span class="line"></span><br><span class="line">SQL&gt; desc ry.test;</span><br><span class="line"> 名称                                      是否为空? 类型</span><br><span class="line"> <span class="hljs-comment">----------------------------------------- -------- ----------------------------</span></span><br><span class="line"> NAME                                               VARCHAR2(20)</span><br><span class="line"> AGE                                                NUMBER(4)</span><br><span class="line"> ID                                                 NUMBER(18)</span><br><span class="line">//删除表</span><br><span class="line">SQL&gt; drop table ry.test;</span><br></pre></td></tr></table></figure>
 
-<h6 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h6><table>
-<thead>
-<tr>
-<th>姓名</th>
-<th>选课人数</th>
-<th>课程名</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>王五</td>
-<td>55</td>
-<td>数据结构</td>
-</tr>
-<tr>
-<td>赵六</td>
-<td>70</td>
-<td>组成原理</td>
-</tr>
-<tr>
-<td>王五2</td>
-<td>55</td>
-<td>数据结构</td>
-</tr>
-</tbody></table>
+<h3 id="3-CRUD"><a href="#3-CRUD" class="headerlink" title="3. CRUD"></a>3. CRUD</h3><p>未完待续</p>
 
         </div>
         
@@ -257,7 +195,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/hexo/page/5/">5</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/hexo/page/6/">6</a></li>
             
         </ul>
     </nav>
@@ -306,7 +244,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </div>
             </div>
@@ -316,7 +254,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        4
+                        5
                     </p>
                 </div>
             </div>
@@ -326,7 +264,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        25
                     </p>
                 </div>
             </div>
@@ -438,6 +376,14 @@
             <span class="level-end">
                 <span class="level-item tag">2</span>
             </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/hexo/categories/ORACLE/">
+            <span class="level-start">
+                <span class="level-item">ORACLE</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
         </a></li>
             </ul>
         </div>
@@ -449,7 +395,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/hexo/tags/Centos8/" style="font-size: 10px;">Centos8</a> <a href="/hexo/tags/Java-SE/" style="font-size: 10px;">Java SE</a> <a href="/hexo/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/hexo/tags/console/" style="font-size: 10px;">console</a> <a href="/hexo/tags/mariadb/" style="font-size: 20px;">mariadb</a> <a href="/hexo/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/hexo/tags/yum/" style="font-size: 10px;">yum</a> <a href="/hexo/tags/事务/" style="font-size: 10px;">事务</a> <a href="/hexo/tags/分组聚合查询/" style="font-size: 10px;">分组聚合查询</a> <a href="/hexo/tags/基础/" style="font-size: 20px;">基础</a> <a href="/hexo/tags/增删改查/" style="font-size: 10px;">增删改查</a> <a href="/hexo/tags/子查询/" style="font-size: 10px;">子查询</a> <a href="/hexo/tags/并发编程/" style="font-size: 10px;">并发编程</a> <a href="/hexo/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/hexo/tags/本地源/" style="font-size: 10px;">本地源</a> <a href="/hexo/tags/查询/" style="font-size: 10px;">查询</a> <a href="/hexo/tags/用户管理/" style="font-size: 10px;">用户管理</a> <a href="/hexo/tags/索引/" style="font-size: 10px;">索引</a> <a href="/hexo/tags/线程同步/" style="font-size: 10px;">线程同步</a> <a href="/hexo/tags/线程池/" style="font-size: 10px;">线程池</a> <a href="/hexo/tags/线程线程池/" style="font-size: 10px;">线程线程池</a> <a href="/hexo/tags/锁/" style="font-size: 10px;">锁</a>
+        <a href="/hexo/tags/Centos8/" style="font-size: 10px;">Centos8</a> <a href="/hexo/tags/Java-SE/" style="font-size: 10px;">Java SE</a> <a href="/hexo/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/hexo/tags/ORACLE/" style="font-size: 10px;">ORACLE</a> <a href="/hexo/tags/ORACLE11G/" style="font-size: 10px;">ORACLE11G</a> <a href="/hexo/tags/console/" style="font-size: 10px;">console</a> <a href="/hexo/tags/mariadb/" style="font-size: 15px;">mariadb</a> <a href="/hexo/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/hexo/tags/yum/" style="font-size: 10px;">yum</a> <a href="/hexo/tags/事务/" style="font-size: 15px;">事务</a> <a href="/hexo/tags/分组聚合查询/" style="font-size: 10px;">分组聚合查询</a> <a href="/hexo/tags/基础/" style="font-size: 20px;">基础</a> <a href="/hexo/tags/增删改查/" style="font-size: 15px;">增删改查</a> <a href="/hexo/tags/子查询/" style="font-size: 10px;">子查询</a> <a href="/hexo/tags/并发编程/" style="font-size: 10px;">并发编程</a> <a href="/hexo/tags/数据库/" style="font-size: 15px;">数据库</a> <a href="/hexo/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/hexo/tags/本地源/" style="font-size: 10px;">本地源</a> <a href="/hexo/tags/查询/" style="font-size: 10px;">查询</a> <a href="/hexo/tags/用户管理/" style="font-size: 15px;">用户管理</a> <a href="/hexo/tags/索引/" style="font-size: 15px;">索引</a> <a href="/hexo/tags/线程同步/" style="font-size: 10px;">线程同步</a> <a href="/hexo/tags/线程池/" style="font-size: 10px;">线程池</a> <a href="/hexo/tags/线程线程池/" style="font-size: 10px;">线程线程池</a> <a href="/hexo/tags/锁/" style="font-size: 10px;">锁</a>
     </div>
 </div>
     
@@ -461,6 +407,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/hexo/2019/10/19/ORACLE基础练习/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/hexo/images/thumbnail.svg" alt="ORACLE基础练习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-19T13:29:12.000Z">2019-10-19</time></div>
+                    <a href="/hexo/2019/10/19/ORACLE基础练习/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ORACLE基础练习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/hexo/categories/ORACLE/">ORACLE</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -538,25 +503,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/hexo/2019/09/29/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/hexo/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T13:22:07.300Z">2019-09-29</time></div>
-                    <a href="/hexo/2019/09/29/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -574,7 +520,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -625,6 +571,20 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/ORACLE/">
+                        <span class="tag">ORACLE</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/ORACLE11G/">
+                        <span class="tag">ORACLE11G</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/console/">
                         <span class="tag">console</span>
                         <span class="tag is-grey">1</span>
@@ -655,7 +615,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/事务/">
                         <span class="tag">事务</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -669,14 +629,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/基础/">
                         <span class="tag">基础</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/增删改查/">
                         <span class="tag">增删改查</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -691,6 +651,13 @@
                     <a class="tags has-addons" href="/hexo/tags/并发编程/">
                         <span class="tag">并发编程</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/数据库/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -718,14 +685,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/用户管理/">
                         <span class="tag">用户管理</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/索引/">
                         <span class="tag">索引</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -781,6 +748,25 @@
         
         <article class="media">
             
+            <a href="/hexo/2019/10/19/ORACLE基础练习/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/hexo/images/thumbnail.svg" alt="ORACLE基础练习">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-19T13:29:12.000Z">2019-10-19</time></div>
+                    <a href="/hexo/2019/10/19/ORACLE基础练习/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ORACLE基础练习</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/hexo/categories/ORACLE/">ORACLE</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/hexo/2019/10/09/mysql查询应用/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/hexo/images/thumbnail.svg" alt="mysql查询应用">
@@ -855,25 +841,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/hexo/2019/09/29/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/hexo/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T13:22:07.300Z">2019-09-29</time></div>
-                    <a href="/hexo/2019/09/29/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -891,7 +858,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -942,6 +909,20 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/ORACLE/">
+                        <span class="tag">ORACLE</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/ORACLE11G/">
+                        <span class="tag">ORACLE11G</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/console/">
                         <span class="tag">console</span>
                         <span class="tag is-grey">1</span>
@@ -972,7 +953,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/事务/">
                         <span class="tag">事务</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -986,14 +967,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/基础/">
                         <span class="tag">基础</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/增删改查/">
                         <span class="tag">增删改查</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1008,6 +989,13 @@
                     <a class="tags has-addons" href="/hexo/tags/并发编程/">
                         <span class="tag">并发编程</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/hexo/tags/数据库/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1035,14 +1023,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/用户管理/">
                         <span class="tag">用户管理</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/hexo/tags/索引/">
                         <span class="tag">索引</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
